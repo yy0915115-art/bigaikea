@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IKEA Taiwan Instagram</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background-color: #fafafa;
+            color: #262626;
+            font-family: Arial, "Noto Sans TC", sans-serif;
+        }
+
+        .page {
+            width: 100%;
+        }
+
+
+        /* =========================
+           Instagram 上方導覽列
+        ========================== */
+
+        .topbar {
+            width: 100%;
+            height: 60px;
+            background-color: white;
+            border-bottom: 1px solid #dbdbdb;
+
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .instagram-logo {
+            font-family: "Arial", sans-serif;
+            font-size: 25px;
+            font-weight: 600;
+            letter-spacing: -1px;
+        }
+
+
+        /* =========================
+           貼文本體
+        ========================== */
+
+        .post {
+            width: 600px;
+            max-width: 100%;
+            margin: 30px auto;
+            background-color: white;
+            border: 1px solid #dbdbdb;
+        }
+
+
+        /* =========================
+           帳號資訊
+        ========================== */
+
+        .post-header {
+            height: 60px;
+            display: flex;
+            align-items: center;
+            padding: 0 16px;
+        }
+
+        .profile-picture {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 10px;
+        }
+
+        .profile-picture img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .account-name {
+            font-size: 14px;
+        }
+
+        .more {
+            margin-left: auto;
+            font-size: 22px;
+            line-height: 1;
+            letter-spacing: 2px;
+        }
+
+
+        /* =========================
+           貼文圖片
+        ========================== */
+
+        .post-image {
+            width: 100%;
+            background-color: #f5f5f5;
+        }
+
+        .post-image img {
+            width: 100%;
+            display: block;
+        }
+
+
+        /* =========================
+           操作按鈕
+        ========================== */
+
+        .post-actions {
+            height: 54px;
+            display: flex;
+            align-items: center;
+            padding: 0 14px;
+        }
+
+        .left-actions {
+            display: flex;
+            align-items: center;
+            gap: 17px;
+        }
+
+        /* 每個圖示＋數字 */
+        .action-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            height: 24px;
+        }
+
+        .post-actions button {
+            border: none;
+            background: transparent;
+            padding: 0;
+            margin: 0;
+            width: 24px;
+            height: 24px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            cursor: pointer;
+            color: #262626;
+        }
+
+        .post-actions svg {
+            width: 24px;
+            height: 24px;
+            display: block;
+        }
+
+        /* 數字 */
+        .action-count {
+            font-size: 13px;
+            color: #262626;
+            line-height: 24px;
+            white-space: nowrap;
+        }
+
+        .save {
+            margin-left: auto !important;
+        }
+
+
+        /* =========================
+           貼文文字
+        ========================== */
+
+        .caption {
+            padding: 0 14px;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .caption strong {
+            margin-right: 4px;
+        }
+
+
+        /* =========================
+           留言區
+        ========================== */
+
+        .comments {
+            padding: 16px 14px 0;
+        }
+
+        .comment {
+            margin-bottom: 18px;
+        }
+
+        .comment-header {
+            display: flex;
+            align-items: center;
+        }
+
+        .comment-user {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+        }
+
+        .comment-time {
+            color: #8e8e8e;
+            font-size: 12px;
+        }
+
+        .comment-like {
+            margin-left: auto;
+            border: none;
+            background: transparent;
+            font-size: 20px;
+            cursor: pointer;
+            padding: 0;
+            color: #262626;
+        }
+
+        .comment-text {
+            margin-top: 5px;
+            padding-right: 25px;
+            font-size: 14px;
+            line-height: 1.55;
+        }
+
+
+        /* =========================
+           日期
+        ========================== */
+
+        .post-date {
+            padding: 0 14px 10px;
+            color: #8e8e8e;
+            font-size: 10px;
+            text-transform: uppercase;
+        }
+
+
+        /* =========================
+           留言輸入
+        ========================== */
+
+        .comment-input {
+            height: 50px;
+            border-top: 1px solid #efefef;
+
+            display: flex;
+            align-items: center;
+
+            padding: 0 14px;
+
+            color: #8e8e8e;
+            font-size: 14px;
+        }
+
+
+        /* =========================
+           手機版
+        ========================== */
+
+        @media (max-width: 650px) {
+
+            .post {
+                width: 100%;
+                margin: 0;
+                border-left: none;
+                border-right: none;
+            }
+
+            .topbar {
+                height: 54px;
+            }
+
+            .instagram-logo {
+                font-size: 23px;
+            }
+
+            .left-actions {
+                gap: 12px;
+            }
+
+            .action-item {
+                gap: 4px;
+            }
+
+            .action-count {
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+
+
+<body>
+
+    <div class="page">
+
+        <!-- Instagram 上方導覽列 -->
+        <header class="topbar">
+            <div class="instagram-logo">
+                Instagram
+            </div>
+        </header>
+
+
+        <!-- Instagram 貼文 -->
+        <main class="post">
+
+
+            <!-- =========================
+                 帳號資訊
+            ========================== -->
+
+            <div class="post-header">
+
+                <div class="profile-picture">
+                    <img src="images.png" alt="IKEA Taiwan">
+                </div>
+
+                <div class="account-name">
+                    <strong>ikea_taiwn</strong>
+                </div>
+
+                <div class="more">
+                    ⋯
+                </div>
+
+            </div>
+
+
+            <!-- =========================
+                 貼文圖片
+            ========================== -->
+
+            <div class="post-image">
+                <img src="p.jpg" alt="IKEA 北歐家具貼文">
+            </div>
+
+
+            <!-- =========================
+                 貼文操作按鈕
+            ========================== -->
+
+            <div class="post-actions">
+
+                <div class="left-actions">
+
+
+                    <!-- 愛心＋讚數 -->
+                    <div class="action-item">
+
+                        <button aria-label="讚">
+
+                            <svg
+                                aria-label="讚"
+                                viewBox="0 0 24 24"
+                                width="24"
+                                height="24"
+                                fill="none">
+
+                                <path
+                                    d="M20.84 8.76
+                                       C20.84 5.99 18.6 3.75 15.83 3.75
+                                       C14.22 3.75 12.79 4.51 11.87 5.69
+                                       C10.95 4.51 9.52 3.75 7.91 3.75
+                                       C5.14 3.75 2.9 5.99 2.9 8.76
+                                       C2.9 14.26 11.87 20.24 11.87 20.24
+                                       C11.87 20.24 20.84 14.26 20.84 8.76Z"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                </path>
+
+                            </svg>
+
+                        </button>
+
+                        <span class="action-count">1,286</span>
+
+                    </div>
+
+
+                    <!-- 留言＋留言數 -->
+                    <div class="action-item">
+
+                        <button aria-label="留言">
+
+                            <svg
+                                aria-label="留言"
+                                viewBox="0 0 24 24"
+                                width="24"
+                                height="24"
+                                fill="none">
+
+                                <path
+                                    d="M20.5 11.5
+                                       C20.5 16.2 16.7 20 12 20
+                                       C10.45 20 9 19.58 7.75 18.85
+                                       L3.5 20
+                                       L4.65 15.75
+                                       C3.92 14.5 3.5 13.05 3.5 11.5
+                                       C3.5 6.8 7.3 3 12 3
+                                       C16.7 3 20.5 6.8 20.5 11.5Z"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                </path>
+
+                            </svg>
+
+                        </button>
+
+                        <span class="action-count">24</span>
+
+                    </div>
+
+
+                    <!-- 轉發＋轉發數 -->
+                    <div class="action-item">
+
+                        <button aria-label="轉發">
+
+                            <svg
+                                aria-label="轉發"
+                                viewBox="0 0 24 24"
+                                width="24"
+                                height="24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round">
+
+                                <polyline points="17 1 21 5 17 9"></polyline>
+
+                                <path d="M3 11V9a4 4 0 0 1 4-4h14"></path>
+
+                                <polyline points="7 23 3 19 7 15"></polyline>
+
+                                <path d="M21 13v2a4 4 0 0 1-4 4H3"></path>
+
+                            </svg>
+
+                        </button>
+
+                        <span class="action-count">38</span>
+
+                    </div>
+
+
+                    <!-- 分享 -->
+                    <button aria-label="分享貼文">
+
+                        <svg
+                            aria-label="分享貼文"
+                            viewBox="0 0 24 24"
+                            width="24"
+                            height="24"
+                            fill="none">
+
+                            <path
+                                d="M21.5 2.5
+                                   L14.5 21.5
+                                   L10.5 13.5
+                                   L2.5 9.5
+                                   L21.5 2.5Z"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round">
+                            </path>
+
+                            <path
+                                d="M10.5 13.5
+                                   L21.5 2.5"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round">
+                            </path>
+
+                        </svg>
+
+                    </button>
+
+                </div>
+
+
+                <!-- =====================
+                     儲存
+                ====================== -->
+
+                <button class="save" aria-label="儲存">
+
+                    <svg
+                        aria-label="儲存"
+                        viewBox="0 0 24 24"
+                        width="24"
+                        height="24"
+                        fill="none">
+
+                        <path
+                            d="M5 3.5
+                               H19
+                               V21
+                               L12 16
+                               L5 21
+                               V3.5Z"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round">
+                        </path>
+
+                    </svg>
+
+                </button>
+
+            </div>
+
+
+            <!-- =========================
+                 貼文文字
+            ========================== -->
+
+            <div class="caption">
+
+                <strong>ikea_taiwn</strong>
+
+              讓生活回歸本質，為每個獨特的家，「量身打造專屬」於你的北歐哲學。
+
+                <br>
+
+                從風格搭配到靈感落地，我們提供完整全套規劃，輕鬆實現生活靈感。
+
+                <br><br>
+
+               一個美好的家，值得擁有無微不至的精緻照顧。
+
+                <br>
+
+               我們精選極致純粹的北歐經典原木與繁複的匠人榫卯工藝，讓客廳的每一處角落都呈現出如「美術館展覽」般的冷冽藝術感。
+
+                <br>
+
+                為了追求完美的空間比例，我們貼心為你規劃了多功能展示層架——只需嚴格保持 30% 留白率並定期搭配專用油脂保養，即可優雅收納你的藝術藏品。
+
+                <br>
+
+               我們相信，真正的自主創造不是繁瑣的動手組裝，而是將專業交給我們。
+
+                <br>
+              從零開始的主題風格配置，讓你省去挑選與組裝的疲憊，只需點頭確認，即可輕鬆擁抱屬於你的理想生活。v
+ <br><br> 
+                #IKEA #北歐家具 #奢華生活 #品味生活 #居家設計
+
+            </div>
+
+
+            <!-- =========================
+                 留言區
+            ========================== -->
+
+            <div class="comments">
+
+
+                <!-- 第一則留言 -->
+
+                <div class="comment">
+
+                    <div class="comment-header">
+
+                        <div class="comment-user">
+                            <strong>jaconetis818</strong>
+                            <span class="comment-time">兩週前</span>
+                        </div>
+
+                        <button class="comment-like" aria-label="讚">
+                            ♡
+                        </button>
+
+                    </div>
+
+                    <div class="comment-text">
+                        我想把這組兒童收納櫃放在小孩房，小朋友本身比較容易過敏。
+                        請問這系列板材會有甲醛或其他可能造成刺激的物質嗎？
+                    </div>
+
+                </div>
+
+
+                <!-- 小編第一次回覆 -->
+
+                <div class="comment">
+
+                    <div class="comment-header">
+
+                        <div class="comment-user">
+                            <strong>ikea_taiwan</strong>
+                            <span class="comment-time">兩週前</span>
+                        </div>
+
+                        <button class="comment-like" aria-label="讚">
+                            ♡
+                        </button>
+
+                    </div>
+
+                    <div class="comment-text">
+                        完全不用擔心！這個系列 100% 零甲醛、零有害物質，
+                        就算是過敏體質的嬰幼兒也絕對安全，而且全系列都有政府最高等級安全認證，
+                        放在兒童房可以放心使用。
+                    </div>
+
+                </div>
+
+
+                <!-- 兩週後顧客留言 -->
+
+                <div class="comment">
+
+                    <div class="comment-header">
+
+                        <div class="comment-user">
+                            <strong>jaconetis818</strong>
+                            <span class="comment-time">1天前</span>
+                        </div>
+
+                        <button class="comment-like" aria-label="讚">
+                            ♡
+                        </button>
+
+                    </div>
+
+                    <div class="comment-text">
+                        我們買回家放進孩子房間後，房間一直有明顯的氣味。
+                        孩子這幾天開始出現眼睛發癢、流鼻水、皮膚紅疹等過敏與刺激症狀，
+                        晚上待在房間時特別明顯。後來醫師建議先移除可能的室內刺激來源，
+                        我們才先把家具搬出去。
+                    </div>
+
+                </div>
+
+
+                <!-- 小編第二次回覆 -->
+
+                <div class="comment">
+
+                    <div class="comment-header">
+
+                        <div class="comment-user">
+                            <strong>ikea_taiwan</strong>
+                            <span class="comment-time">1天前</span>
+                        </div>
+
+                        <button class="comment-like" aria-label="讚">
+                            ♡
+                        </button>
+
+                    </div>
+
+                    <div class="comment-text">
+                        應該不會是家具造成的喔，我們的產品既然是安全系列，
+                        就不可能造成過敏，可能只是孩子本身體質比較敏感。
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =========================
+                 日期
+            ========================== -->
+
+            <div class="post-date">
+                9月15日
+            </div>
+
+
+            <!-- =========================
+                 留言輸入
+            ========================== -->
+
+            <div class="comment-input">
+                新增留言……
+            </div>
+
+        </main>
+
+    </div>
+
+</body>
+
+</html>
